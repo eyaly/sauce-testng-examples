@@ -265,36 +265,6 @@ public class BaseTestListener implements ITestListener {
         }
     }
 
-    private  void createSauceUPDriver(MutableCapabilities capabilities) {
-        String username = System.getenv("SAUCE_USERNAME");
-        String accesskey = System.getenv("SAUCE_ACCESS_KEY");
-        String euSeleniumURI = "@ondemand.eu-central-1.saucelabs.com:443";
-
-        String SAUCE_REMOTE_URL = "https://" + username + ":" + accesskey + euSeleniumURI +"/wd/hub";
-
-        try {
-            switch (getDriverType()) {
-                case "android":
-                    androidDriver.set(new AndroidDriver(new URL(SAUCE_REMOTE_URL),capabilities));
-                    String id = ((RemoteWebDriver) getAndroidDriver()).getSessionId().toString();
-                    sessionId.set(id);
-                    System.out.println("*** Sauce - Session id for Android is: " + id );
-                    break;
-                case "ios":
-                    iosDriver.set(new IOSDriver(new URL(SAUCE_REMOTE_URL), capabilities));
-                    id = ((RemoteWebDriver) getiosDriver()).getSessionId().toString();
-                    sessionId.set(id);
-                    System.out.println("*** Sauce - Session id for iOS is: " + id );
-                    break;
-            }
-
-        } catch (Exception e) {
-            System.out.println("*** Problem to create the driver " + e.getMessage());
-            sendCommentToReport(e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
-
     private  void createTestObjectDriver(MutableCapabilities capabilities) {
 
         String SAUCE_REMOTE_URL = "https://eu1.appium.testobject.com/wd/hub";
