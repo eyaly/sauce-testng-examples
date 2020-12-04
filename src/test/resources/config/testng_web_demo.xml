@@ -1,0 +1,81 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Web Demo Suite" verbose="0" parallel="tests"
+	thread-count="100">
+	<listeners>
+		<listener class-name="listeners.BaseTestListener"/>
+	</listeners>
+
+
+	<test name="Web Scenarios W3C Safari Mac Test" parallel="methods" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+		<parameter name="W3C" value="true"></parameter>
+		<parameter name="browser" value="safari"></parameter>
+		<parameter name="cap:browserVersion" value="13.1"></parameter>
+		<parameter name="cap:platformName" value="macOS 10.15"></parameter>
+		<parameter name="sauce:build" value="regression tests 18"></parameter>
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
+
+	<test name="Web Scenarios W3C Chrome Mac Test" parallel="methods" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+		<parameter name="W3C" value="true"></parameter>
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="cap:browserVersion" value="latest"></parameter>
+		<parameter name="cap:platformName" value="macOS 10.14"></parameter>
+		<parameter name="sauce:screenResolution" value="1600x1200"></parameter>
+		<parameter name="sauce:build" value="regression tests 18"></parameter>
+		<parameter name="sauce:extendedDebugging" value="true"></parameter>
+		<parameter name="sauce:capturePerformance" value="true"></parameter>
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
+
+	<test name="Web Scenarios W3C Edge Window 10 Test" parallel="methods" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+		<parameter name="W3C" value="true"></parameter>
+		<parameter name="browser" value="MicrosoftEdge"></parameter>
+		<parameter name="cap:browserVersion" value="83.0"></parameter>
+		<parameter name="cap:platformName" value="Windows 10"></parameter>
+		<parameter name="sauce:build" value="regression tests 18"></parameter>
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
+
+	<test name="Web Scenarios W3C firefox Win 7 Test" parallel="methods" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+		<parameter name="W3C" value="true"></parameter>
+		<parameter name="browser" value="firefox"></parameter>
+		<parameter name="cap:browserVersion" value="66.0"></parameter>
+		<parameter name="cap:platformName" value="Windows 7"></parameter>
+		<parameter name="sauce:build" value="regression tests 18"></parameter>
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
+
+
+</suite>

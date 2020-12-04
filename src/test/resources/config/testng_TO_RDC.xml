@@ -1,0 +1,135 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Web Demo Suite" verbose="0" parallel="tests"
+	thread-count="100">
+	<listeners>
+		<listener class-name="listeners.BaseTestListener"/>
+	</listeners>
+
+	<test name="iOS Real Device Test 1" enabled="false">
+		<parameter name="API" value="testobject"></parameter>
+		<parameter name="cap:testobject_api_key" value="A8C914688B444BC2931CDA2B68F37A1F"></parameter>
+
+		<parameter name="cap:deviceName" value="iPhone [67]"></parameter>
+		<parameter name="cap:platformName" value="iOS"></parameter>
+<!--		<parameter name="cap:platformVersion" value="12.3"></parameter>-->
+		<parameter name="cap:automationName" value="XCuiTest"></parameter>
+<!--		<parameter name="cap:privateDevicesOnly" value="true"></parameter>-->
+		<parameter name="cap:noReset" value="true"></parameter>
+		<parameter name="cap:cacheId" value="12321"></parameter>
+		<groups>
+			<run>
+				<include name="@SwagLabs-webview" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests"></package>
+		</packages>
+	</test>
+
+	<test name="iOS Real Device Test 2" enabled="false">
+		<parameter name="API" value="testobject"></parameter>
+		<parameter name="cap:testobject_api_key" value="A8C914688B444BC2931CDA2B68F37A1F"></parameter>
+
+		<parameter name="cap:deviceName" value="iPhone.*"></parameter>
+		<parameter name="cap:platformName" value="iOS"></parameter>
+		<parameter name="cap:automationName" value="XCuiTest"></parameter>
+		<parameter name="cap:noReset" value="true"></parameter>
+		<parameter name="cap:cacheId" value="123456"></parameter>
+		<groups>
+			<run>
+				<include name="@SwagLabs" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests"></package>
+		</packages>
+	</test>
+
+	<test name="Android Real Device Test" enabled="false">
+		<parameter name="API" value="testobject"></parameter>
+		<parameter name="cap:testobject_api_key" value="2DBB7A0059EF48338E7466ADE37B7268"></parameter>
+
+		<parameter name="cap:deviceName" value="Samsung Galaxy S10"></parameter>
+		<parameter name="cap:platformName" value="Android"></parameter>
+		<parameter name="cap:automationName" value="UiAutomator2"></parameter>
+		<parameter name="cap:appWaitActivity" value="com.swaglabsmobileapp.MainActivity"></parameter>
+		<groups>
+			<run>
+				<include name="@SwagLabsAndroid" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests"></package>
+		</packages>
+	</test>
+
+	<test name="Android Real Device Test" enabled="false">
+		<parameter name="API" value="testobject"></parameter>
+		<parameter name="cap:testobject_api_key" value="C618E38E58164855A94225E3730AA64D"></parameter>
+
+		<parameter name="cap:deviceName" value="Samsung.*"></parameter>
+		<parameter name="cap:platformName" value="Android"></parameter>
+		<parameter name="cap:automationName" value="UiAutomator2"></parameter>
+		<groups>
+			<run>
+				<include name="@GuineaPig" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests"></package>
+		</packages>
+	</test>
+
+
+	<test name="Android Real Device Web Android Test" enabled="false">
+		<parameter name="API" value="testobject"></parameter>
+		<parameter name="cap:testobject_api_key" value="0D6BA36809244870841A2A6F830C490C"></parameter>
+
+		<parameter name="cap:deviceName" value="Samsung.*"></parameter>
+		<parameter name="cap:platformName" value="Android"></parameter>
+		<parameter name="cap:automationName" value="UiAutomator2"></parameter>
+		<groups>
+			<run>
+				<include name="@Web1" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
+
+	<test name="Real Device Web iOS Test 3" enabled="false">
+		<parameter name="API" value="testobject"></parameter>
+		<parameter name="cap:testobject_api_key" value="0D6BA36809244870841A2A6F830C490C"></parameter>
+
+		<parameter name="cap:deviceName" value="iPhone.*"></parameter>
+		<parameter name="cap:platformName" value="iOS"></parameter>
+		<parameter name="cap:automationName" value="XCuiTest"></parameter>
+		<groups>
+			<run>
+				<include name="@Web1" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests"></package>
+		</packages>
+	</test>
+
+	<test name="Android Real Device Test" enabled="true">
+		<parameter name="API" value="testobject"></parameter>
+		<parameter name="cap:testobject_api_key" value="BB3AC07EFC9747FA9DF3ECABF9F554C3"></parameter>
+
+		<parameter name="cap:deviceName" value="Samsung Galaxy S10"></parameter>
+		<parameter name="cap:platformName" value="Android"></parameter>
+		<parameter name="cap:automationName" value="UiAutomator2"></parameter>
+		<groups>
+			<run>
+				<include name="@webAndroid" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests"></package>
+		</packages>
+	</test>
+
+</suite>

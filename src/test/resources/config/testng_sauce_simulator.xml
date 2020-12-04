@@ -1,0 +1,61 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Web Demo Suite" verbose="0" parallel="tests"
+	thread-count="100">
+	<listeners>
+		<listener class-name="listeners.BaseTestListener"/>
+	</listeners>
+
+	<test name="App Android Emulator Test" enabled="false">
+		<parameter name="API" value="sauce"></parameter>
+<!--		<parameter name="cap:appiumVersion" value="1.15.1"></parameter>-->
+		<parameter name="cap:deviceName" value="Android Emulator"></parameter>
+<!--		<parameter name="cap:deviceOrientation" value="portrait"></parameter>-->
+		<parameter name="cap:platformVersion" value="8.0"></parameter>
+		<parameter name="cap:platformName" value="Android"></parameter>
+		<parameter name="cap:app" value="https://github.com/saucelabs-training/demo-java/blob/master/appium-example/resources/android/GuineaPigApp-debug.apk?raw=true"></parameter>
+		<groups>
+			<run>
+				<include name="@GuineaPig" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests"></package>
+		</packages>
+	</test>
+
+	<test name="App iOS Simulator Test" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+<!--		<parameter name="cap:appiumVersion" value="1.16.0"></parameter>-->
+		<parameter name="cap:deviceName" value="iPhone 8 Simulator"></parameter>
+		<!--		<parameter name="cap:browserName" value="Safari"></parameter>-->
+		<parameter name="cap:platformVersion" value="13.4"></parameter>
+		<parameter name="cap:platformName" value="iOS"></parameter>
+		<parameter name="cap:app" value="storage:filename=iOS.Simulator.SauceLabs.Mobile.Sample.app.2.3.0.zip"></parameter>
+		<groups>
+			<run>
+				<include name="@SwagLabs" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests"></package>
+		</packages>
+	</test>
+
+	<test name="App iOS Simulator Test" enabled="false">
+		<parameter name="API" value="sauce"></parameter>
+
+		<parameter name="cap:deviceName" value="iPhone 8 Simulator"></parameter>
+		<parameter name="cap:platformVersion" value="13.4"></parameter>
+		<parameter name="cap:platformName" value="iOS"></parameter>
+<!--		<parameter name="cap:app" value="storage:filename=iOS.Simulator.SauceLabs.Mobile.Sample.app.2.3.0.zip"></parameter>-->
+		<parameter name="cap:browserName" value="Safari"></parameter>
+		<groups>
+			<run>
+				<include name="@ios-app-upgrades" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests"></package>
+		</packages>
+	</test>
+</suite>
