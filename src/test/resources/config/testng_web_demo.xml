@@ -77,5 +77,105 @@
 		</packages>
 	</test>
 
+	<test name="Web Scenarios W3C Chrome Win 8.1 Test" parallel="methods" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+		<parameter name="W3C" value="true"></parameter>
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="cap:browserVersion" value="latest"></parameter>
+		<parameter name="cap:platformName" value="Windows 8.1"></parameter>
+		<parameter name="sauce:build" value="regression tests 18"></parameter>
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
 
+	<test name="Web Scenarios W3C Chrome Win 10 Test" parallel="methods" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+		<parameter name="W3C" value="true"></parameter>
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="cap:browserVersion" value="latest"></parameter>
+		<parameter name="cap:platformName" value="Windows 10"></parameter>
+		<parameter name="sauce:build" value="regression tests 18"></parameter>
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
+
+	<test name="Web Scenarios W3C Chrome latest-1 Win 10 Test" parallel="methods" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+		<parameter name="W3C" value="true"></parameter>
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="cap:browserVersion" value="latest-1"></parameter>
+		<parameter name="cap:platformName" value="Windows 10"></parameter>
+		<parameter name="sauce:build" value="regression tests 18"></parameter>
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
+
+	<test name="Web Scenarios W3C Safari Mac 10.14 Test" parallel="methods" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+		<parameter name="W3C" value="true"></parameter>
+		<parameter name="browser" value="safari"></parameter>
+		<parameter name="cap:browserVersion" value="latest"></parameter>
+		<parameter name="cap:platformName" value="macOS 10.14"></parameter>
+		<parameter name="sauce:build" value="regression tests 18"></parameter>
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
+
+	<test name="Web Scenarios W3C Safari Mac 10.13 Test" parallel="methods" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+		<parameter name="W3C" value="true"></parameter>
+		<parameter name="browser" value="safari"></parameter>
+		<parameter name="cap:browserVersion" value="latest-2"></parameter>
+		<parameter name="cap:platformName" value="macOS 10.13"></parameter>
+		<parameter name="sauce:build" value="regression tests 18"></parameter>
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
+
+	<test name="Web Scenarios W3C firefox mac 10.15 Test" parallel="methods" enabled="true">
+		<parameter name="API" value="sauce"></parameter>
+		<parameter name="W3C" value="true"></parameter>
+		<parameter name="browser" value="firefox"></parameter>
+		<parameter name="cap:browserVersion" value="latest"></parameter>
+		<parameter name="cap:platformName" value="macOS 10.15"></parameter>
+		<parameter name="sauce:build" value="regression tests 18"></parameter>
+		<groups>
+			<run>
+				<include name="@Web" />
+			</run>
+		</groups>
+		<packages>
+			<package name="tests.web"></package>
+		</packages>
+	</test>
 </suite>

@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.ie.InternetExplorerOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariOptions;
 import org.testng.ITestContext;
@@ -19,6 +20,8 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
+
+import static helpers.Config.region;
 
 public class BaseTestListener implements ITestListener {
 
@@ -218,10 +221,15 @@ public class BaseTestListener implements ITestListener {
     private  void createSauceDriver(MutableCapabilities capabilities, String testName) {
         String username = System.getenv("SAUCE_USERNAME");
         String accesskey = System.getenv("SAUCE_ACCESS_KEY");
-        String euSeleniumURI = "@ondemand.eu-central-1.saucelabs.com:443";
-       // String euSeleniumURI = "@ondemand.us-west-1.saucelabs.com:443";
+        String sauceUrl;
+        System.out.println("*** Sauce - region is " + region );
+        if (region.equalsIgnoreCase("eu")) {
+            sauceUrl = "@ondemand.eu-central-1.saucelabs.com:443";
+        } else {
+            sauceUrl = "@ondemand.us-west-1.saucelabs.com:443";
+        }
 
-        String SAUCE_REMOTE_URL = "https://" + username + ":" + accesskey + euSeleniumURI +"/wd/hub";
+        String SAUCE_REMOTE_URL = "https://" + username + ":" + accesskey + sauceUrl +"/wd/hub";
 
         try {
             switch (getDriverType()) {
@@ -322,6 +330,7 @@ public class BaseTestListener implements ITestListener {
     private void addLocalCap(MutableCapabilities capabilities, Map<String, String> driverParams) {
 
         String browser = driverParams.get("browser").toLowerCase();
+
         if (browser.equals("chrome")) {
             System.out.println("*** Sauce - add Chrome local capabilities ***");
             String driverPath = driverParams.get("webdriver.chrome.driver");
@@ -332,31 +341,33 @@ public class BaseTestListener implements ITestListener {
     private  void addW3CCap(MutableCapabilities capabilities, Map<String, String> driverParams, String testName) {
 
         String browser = driverParams.get("browser").toLowerCase();
-        if (browser.equals("chrome")) {
-            System.out.println("*** Sauce - Add chrome W3C driver ***");
-            ChromeOptions chromeOpts = new ChromeOptions();
-            chromeOpts.setExperimentalOption("w3c", true);
-            capabilities.merge(chromeOpts);
-            capabilities.setCapability("browserName", browser);
-        }
-        else if (browser.equals("firefox")) {
-            System.out.println("*** Sauce - Add firefox W3C driver ***");
-            FirefoxOptions firefoxOpts = new FirefoxOptions();
-            capabilities.merge(firefoxOpts);
-            capabilities.setCapability("browserName", browser);
-        }
-        else if (browser.equals("safari")) {
-            System.out.println("*** Sauce - Add Safari W3C driver ***");
-            SafariOptions safaruOpts = new SafariOptions();
-            capabilities.merge(safaruOpts);
-            capabilities.setCapability("browserName", browser);
-        }
 
-        else if (browser.equals("microsoftedge")) {
-            System.out.println("*** Sauce - Add Edge W3C driver ***");
-            EdgeOptions edgeOpts = new EdgeOptions();
-            capabilities.merge(edgeOpts);
-            capabilities.setCapability("browserName", browser);
+        switch (browser){
+            case "chrome":
+                System.out.println("*** Sauce - Add chrome W3C driver ***");
+                ChromeOptions chromeOpts = new ChromeOptions();
+                chromeOpts.setExperimentalOption("w3c", true);
+                capabilities.merge(chromeOpts);
+                capabilities.setCapability("browserName", browser);
+                break;
+            case "firefox":
+                System.out.println("*** Sauce - Add firefox W3C driver ***");
+                FirefoxOptions firefoxOpts = new FirefoxOptions();
+                capabilities.merge(firefoxOpts);
+                capabilities.setCapability("browserName", browser);
+                break;
+            case "safari":
+                System.out.println("*** Sauce - Add Safari W3C driver ***");
+                SafariOptions safaruOpts = new SafariOptions();
+                capabilities.merge(safaruOpts);
+                capabilities.setCapability("browserName", browser);
+                break;
+            case "microsoftedge":
+                System.out.println("*** Sauce - Add Edge W3C driver ***");
+                EdgeOptions edgeOpts = new EdgeOptions();
+                capabilities.merge(edgeOpts);
+                capabilities.setCapability("browserName", browser);
+                break;
         }
 
         setDriverCapabilities(capabilities, driverParams);

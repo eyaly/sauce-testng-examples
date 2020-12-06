@@ -24,6 +24,50 @@ public class SwagWebTest extends BaseTestListener {
         Assert.assertTrue(inventoryPage.isOnPage());
     }
 
+    @Test(groups = { "@Web"})
+    public void loginTestValid2() {
+
+        SwagLoginPage loginPage = new SwagLoginPage(this.getDriver());
+        loginPage.navigate();
+        loginPage.login("standard_user", "secret_sauce");
+
+        SwagInventoryPage inventoryPage = new SwagInventoryPage(this.getDriver());
+        Assert.assertTrue(inventoryPage.isOnPage());
+    }
+
+    @Test(groups = { "@Web"})
+    public void loginTestValid3() {
+
+        SwagLoginPage loginPage = new SwagLoginPage(this.getDriver());
+        loginPage.navigate();
+        loginPage.login("standard_user", "secret_sauce");
+
+        SwagInventoryPage inventoryPage = new SwagInventoryPage(this.getDriver());
+        Assert.assertTrue(inventoryPage.isOnPage());
+    }
+
+    @Test(groups = { "@Web"})
+    public void loginTestValid4() {
+
+        SwagLoginPage loginPage = new SwagLoginPage(this.getDriver());
+        loginPage.navigate();
+        loginPage.login("standard_user", "secret_sauce");
+
+        SwagInventoryPage inventoryPage = new SwagInventoryPage(this.getDriver());
+        Assert.assertTrue(inventoryPage.isOnPage());
+    }
+
+    @Test(groups = { "@Web"})
+    public void loginTestValid5() {
+
+        SwagLoginPage loginPage = new SwagLoginPage(this.getDriver());
+        loginPage.navigate();
+        loginPage.login("standard_user", "secret_sauce");
+
+        SwagInventoryPage inventoryPage = new SwagInventoryPage(this.getDriver());
+        Assert.assertTrue(inventoryPage.isOnPage());
+    }
+
     @Test(groups = { "@Web" , "@Login"})
     public void loginTestValidPerfGlitch() {
 
